@@ -19,4 +19,7 @@ int main() {
     print_string(s);
 
     printf("Buffer: %s\n", (const char*)s);
+    std::cout<<s[0]<<std::endl;
+    std::cout<<s[s.len() - 1]<<std::endl;
+    std::cout<<s.len()<<std::endl;
 }
