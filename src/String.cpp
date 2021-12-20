@@ -1,4 +1,4 @@
-#include <gallium/str.h>
+#include <gallium/String.h>
 #include <cstring>
 
 namespace gallium {
