@@ -102,12 +102,25 @@ char gallium::String::pop() {
 
     m_Size -= 1;
     m_Buffer = (char*)realloc(m_Buffer, (m_Size * sizeof(m_Size)) + 1);
+    m_Buffer[m_Size] = '\0';
 
     return last;
 }
 
 gallium::String::operator const char *() {
     return m_Buffer;
+}
+
+char gallium::String::operator[](size_t idx) const {
+    if (idx < 0 || idx >= m_Size) {
+        throw std::invalid_argument("Out of bound index while trying to read using String[]");
+    }
+
+    return m_Buffer[idx];
+}
+
+size_t gallium::String::len() {
+    return m_Size;
 }
 
 void gallium::String::set_buffer(const char *rhs) {

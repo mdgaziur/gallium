@@ -14,22 +14,26 @@ namespace gallium {
         String();
         ~String();
 
-        void extend(const String&);
-        void extend(const char*);
-        char pop();
+        void    extend(const String&);
+        void    extend(const char*);
+        char    pop();
+        size_t  len();
 
         // Operator overloads
-        friend std::ostream& operator<<(std::ostream&, const String&);
-        String& operator=(const char*);
-        String& operator=(const String&);
-        String  operator+(const char*);
-        String  operator+(const String&);
-        String& operator+=(const char*);
-        String& operator+=(const String&);
+        friend   std::ostream& operator<<(std::ostream&, const String&);
+        String&  operator=(const char*);
+        String&  operator=(const String&);
+        String   operator+(const char*);
+        String   operator+(const String&);
+        String&  operator+=(const char*);
+        String&  operator+=(const String&);
+        char     operator[](size_t idx) const;
+
+        // type cast
         explicit operator const char*();
 
     private:
-        char    *m_Buffer = nullptr;
+        char   *m_Buffer = nullptr;
         size_t  m_Size = 0;
 
         void set_buffer(const char*);
