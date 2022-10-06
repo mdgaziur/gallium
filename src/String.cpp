@@ -124,7 +124,9 @@ size_t gallium::String::len() {
 }
 
 void gallium::String::set_buffer(const char *rhs) {
-    free(m_Buffer);
+    if (m_Buffer) {
+        free(m_Buffer);
+    }
     m_Size = strlen(rhs);
     m_Buffer = (char *) malloc((m_Size * sizeof(char)) + 1);
 
